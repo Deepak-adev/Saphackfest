@@ -1,0 +1,40 @@
+_schema-version: '3.1'
+ID: polarresilience-ai
+version: 1.0.0
+description: Agentic AI Control Tower for Supply Chain Resilience
+
+modules:
+  - name: polarresilience-approuter
+    type: approuter.nodejs
+    path: approuter
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: polarresilience-uaa
+      - name: polarresilience-dest
+    
+  - name: polarresilience-ui
+    type: html5
+    path: frontend
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npm run build
+      supported-platforms: []
+
+resources:
+  - name: polarresilience-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+
+  - name: polarresilience-dest
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite

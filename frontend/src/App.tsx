@@ -54,13 +54,7 @@ const supplyPosition = [
   { mat: 'Spare Parts', maitri: '12d', bharati: '29d', incoming: '25d', risk: 'HIGH', maitriRaw: 12 },
 ];
 
-const capacityAllocationData = [
-  { name: 'Medical', priority: 100, allocated: 20 },
-  { name: 'Fuel', priority: 95, allocated: 45 },
-  { name: 'Food', priority: 85, allocated: 25 },
-  { name: 'Spare Parts', priority: 70, allocated: 10 },
-  { name: 'Scientific', priority: 50, allocated: 0 },
-];
+
 
 // --- COMPONENTS ---
 const CustomNode = ({ data }: any) => {
@@ -306,23 +300,74 @@ export default function App() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-in slide-in-from-bottom-4 duration-500 fade-in">
           <div className="card flex flex-col col-span-1 overflow-hidden">
             <div className="bg-white px-5 py-4 border-b border-slate-200">
-              <h2 className="text-xs font-bold text-slate-700 uppercase tracking-widest">What Changed?</h2>
+              <h2 className="text-xs font-bold text-slate-700 uppercase tracking-widest flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Agentic Reasoning Flow</h2>
             </div>
-            <div className="p-6 flex-1 flex flex-col gap-4 font-mono text-xs text-slate-700">
-              <div className="grid grid-cols-3 gap-2 pb-3 border-b border-slate-200 font-bold text-slate-500 uppercase text-[10px] tracking-wider">
-                <div>Metric</div><div>Baseline</div><div>Current</div>
-              </div>
-              <div className="grid grid-cols-3 gap-2 items-center">
-                <div className="text-slate-500">Critical Cov.</div><div>38d</div><div className={systemStatus === 'CRITICAL' ? 'text-red-600 font-bold bg-red-500/10 px-2 py-1 rounded inline-block' : 'text-emerald-600 font-bold bg-emerald-500/10 px-2 py-1 rounded inline-block'}>{systemStatus === 'CRITICAL' ? '11d ↓' : '36d ↑'}</div>
-              </div>
-              <div className="grid grid-cols-3 gap-2 items-center">
-                <div className="text-slate-500">Fuel Cov.</div><div>42d</div><div className={systemStatus === 'CRITICAL' ? 'text-red-600 font-bold bg-red-500/10 px-2 py-1 rounded inline-block' : 'text-emerald-600 font-bold bg-emerald-500/10 px-2 py-1 rounded inline-block'}>{systemStatus === 'CRITICAL' ? '23d ↓' : '39d ↑'}</div>
-              </div>
-              <div className="grid grid-cols-3 gap-2 items-center">
-                <div className="text-slate-500">Shipment ETA</div><div>12d</div><div className={systemStatus === 'CRITICAL' ? 'text-red-600 font-bold bg-red-500/10 px-2 py-1 rounded inline-block' : 'text-emerald-600 font-bold bg-emerald-500/10 px-2 py-1 rounded inline-block'}>{systemStatus === 'CRITICAL' ? '26d ↑' : '19d ↓'}</div>
-              </div>
-              <div className="grid grid-cols-3 gap-2 items-center">
-                <div className="text-slate-500">Shortage Risk</div><div>LOW</div><div className={systemStatus === 'CRITICAL' ? 'text-red-600 font-bold bg-red-500/10 px-2 py-1 rounded inline-block' : 'text-emerald-600 font-bold bg-emerald-500/10 px-2 py-1 rounded inline-block'}>{systemStatus === 'CRITICAL' ? 'HIGH ↑' : 'LOW ↓'}</div>
+            <div className="p-6 flex-1 overflow-y-auto max-h-[500px]">
+              <div className="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blue-500 before:via-slate-300 before:to-slate-300">
+                
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-4 h-4 rounded-full border-2 border-white bg-blue-500 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 ml-3 md:ml-0"></div>
+                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-3 rounded bg-blue-50 border border-blue-100 shadow-sm">
+                    <h3 className="font-bold text-slate-900 text-[10px] uppercase mb-1">1. Sense Disruption</h3>
+                    <p className="text-[10px] text-slate-600 leading-tight">Expedition vessel ETA changed from Day 7 → Day 18 (sea-ice).</p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-4 h-4 rounded-full border-2 border-white bg-blue-500 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 ml-3 md:ml-0"></div>
+                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-3 rounded bg-white border border-slate-200 shadow-sm">
+                    <h3 className="font-bold text-slate-900 text-[10px] uppercase mb-1">2. Understand Impact</h3>
+                    <p className="text-[10px] text-slate-600 leading-tight">Checking Fuel, Food, Medicine. JET A1 FUEL: 72 days stock, Risk HIGH.</p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-4 h-4 rounded-full border-2 border-white bg-blue-500 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 ml-3 md:ml-0"></div>
+                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-3 rounded bg-white border border-slate-200 shadow-sm">
+                    <h3 className="font-bold text-slate-900 text-[10px] uppercase mb-1">3. Predict Shortage</h3>
+                    <p className="text-[10px] text-slate-600 leading-tight">Fuel remains safe, but medical supplies fall below minimum in 6 days.</p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-4 h-4 rounded-full border-2 border-white bg-blue-500 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 ml-3 md:ml-0"></div>
+                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-3 rounded bg-white border border-slate-200 shadow-sm">
+                    <h3 className="font-bold text-slate-900 text-[10px] uppercase mb-1">4. Generate Scenarios</h3>
+                    <p className="text-[10px] text-slate-600 leading-tight">Evaluated +7d, +14d, +18d cascading "what-if" impacts.</p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-4 h-4 rounded-full border-2 border-white bg-blue-500 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 ml-3 md:ml-0"></div>
+                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-3 rounded bg-white border border-slate-200 shadow-sm">
+                    <h3 className="font-bold text-slate-900 text-[10px] uppercase mb-1">5. Logistics Options</h3>
+                    <p className="text-[10px] text-slate-600 leading-tight">Constraints checked: seasonal air ops, 1500kg flight limit.</p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-4 h-4 rounded-full border-2 border-white bg-blue-500 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 ml-3 md:ml-0"></div>
+                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-3 rounded bg-white border border-slate-200 shadow-sm">
+                    <h3 className="font-bold text-slate-900 text-[10px] uppercase mb-1">6. Prioritize Capacity</h3>
+                    <p className="text-[10px] text-slate-600 leading-tight">1. Emergency 2. Medicine 3. Critical Spares</p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-4 h-4 rounded-full border-2 border-white bg-blue-500 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 ml-3 md:ml-0"></div>
+                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-3 rounded bg-white border border-slate-200 shadow-sm">
+                    <h3 className="font-bold text-slate-900 text-[10px] uppercase mb-1">7. Energy Consequences</h3>
+                    <p className="text-[10px] text-slate-600 leading-tight">Fuel delivery delayed → reserve decreases → prioritize loads.</p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-4 h-4 rounded-full border-2 border-white bg-blue-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 ml-3 md:ml-0 animate-pulse"></div>
+                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-3 rounded bg-emerald-50 border border-emerald-200 shadow-sm">
+                    <h3 className="font-bold text-emerald-700 text-[10px] uppercase mb-1">8. Joint Optimization</h3>
+                    <p className="text-[10px] text-emerald-700 font-bold leading-tight">BEST FEASIBLE RECOVERY PLAN GENERATED</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -340,46 +385,41 @@ export default function App() {
             <div className="p-6 flex-1 flex flex-col gap-6">
               {systemStatus === 'CRITICAL' ? (
                 <>
-                  <div className="grid grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">DISRUPTION DETAILS</h3>
-                      <p className="text-sm text-slate-800 border-l-2 border-red-500 pl-4 py-1 bg-slate-200/50 rounded-r">Primary Resupply Shipment Delayed ({selectedScenario})</p>
-                      <div className="mt-4 text-xs font-mono text-slate-700 space-y-2">
-                        <p className="flex items-center gap-2"><MapPin size={12} className="text-slate-500"/> Affected: 2 Stations</p>
-                        <p className="flex items-center gap-2"><Package size={12} className="text-slate-500"/> Affected: 6 Materials, 4 Shipments</p>
-                        <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-md mt-2 space-y-1">
-                          <p className="text-red-600 font-bold text-[11px] uppercase tracking-wider">⚠️ Fuel Available: 42 days | Required: 51 days</p>
-                          <p className="text-red-600 font-bold text-[11px] uppercase tracking-wider">⚠️ 9-Day Resource Gap Detected (Risk: HIGH)</p>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="grid grid-cols-1 gap-8">
                     <div className="flex flex-col h-full">
                       <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">RECOMMENDED RECOVERY PLAN</h3>
                       {selectedScenario === 'no-reroute' ? (
                         <>
-                          <p className="text-sm text-amber-600 font-bold mb-2 flex items-center gap-2"><AlertTriangle size={14}/> Fallback Recovery Strategy</p>
-                          <ul className="text-xs text-slate-700 border-l-2 border-amber-500 pl-4 py-3 bg-amber-500/10 rounded-r flex-1 space-y-2">
-                            <li className="flex items-center gap-2"><span>📦</span> Rebalance inventory</li>
-                            <li className="flex items-center gap-2"><span>⚡</span> Optimize renewable/battery/diesel mix</li>
-                            <li className="flex items-center gap-2"><span>⛽</span> Preserve emergency fuel reserve</li>
-                            <li className="flex items-center gap-2"><span>🔌</span> Curtail selected non-critical loads</li>
-                          </ul>
+                          <p className="text-sm text-red-600 font-bold mb-3 flex items-center gap-2">🔴 NO FEASIBLE LOGISTICS RECOVERY AVAILABLE</p>
+                          <div className="text-xs text-slate-700 border-l-2 border-red-500 pl-4 py-3 bg-red-500/10 rounded-r flex-1 flex flex-col justify-center">
+                            <div className="flex items-center gap-2 mb-2 font-bold text-slate-800"><span className="text-red-600">✗</span> No feasible transport</div>
+                            <div className="w-0.5 h-3 bg-red-300 ml-2 mb-2"></div>
+                            <div className="flex items-center gap-2 mb-2 font-bold text-slate-800"><span className="text-blue-500">🛡️</span> Protect critical inventory</div>
+                            <div className="w-0.5 h-3 bg-red-300 ml-2 mb-2"></div>
+                            <div className="flex items-center gap-2 mb-2 font-bold text-slate-800"><span className="text-amber-500">⚡</span> Prioritize essential loads</div>
+                            <div className="w-0.5 h-3 bg-red-300 ml-2 mb-2"></div>
+                            <div className="flex items-center gap-2 mb-2 font-bold text-slate-800"><span className="text-emerald-600">🔌</span> Reduce non-critical consumption</div>
+                            <div className="w-0.5 h-3 bg-red-300 ml-2 mb-2"></div>
+                            <div className="flex items-center gap-2 font-bold text-slate-800"><span className="text-indigo-600">👤</span> Escalate to human decision-maker</div>
+                          </div>
                         </>
                       ) : (
                         <>
-                          <p className="text-sm text-blue-600 font-bold mb-2 flex items-center gap-2"><Zap size={14}/> Coordinated Recovery Plan</p>
-                          <ul className="text-xs text-slate-700 border-l-2 border-blue-500 pl-4 py-3 bg-blue-500/10 rounded-r flex-1 space-y-2">
-                            <li className="flex items-center gap-2"><span>🚢</span> Reroute critical supplies</li>
-                            <li className="flex items-center gap-2"><span>📦</span> Rebalance inventory</li>
-                            <li className="flex items-center gap-2"><span>⚡</span> Optimize renewable/battery/diesel mix</li>
-                            <li className="flex items-center gap-2"><span>⛽</span> Preserve emergency fuel reserve</li>
-                            <li className="flex items-center gap-2"><span>🔌</span> Curtail selected non-critical loads</li>
-                          </ul>
+                          <div className="text-xs text-slate-700 border-l-2 border-blue-500 pl-4 py-3 bg-blue-500/10 rounded-r flex-1 space-y-2 font-mono">
+                            <p><span className="font-bold text-slate-900 w-44 inline-block">Disruption:</span> Vessel delay</p>
+                            <p><span className="font-bold text-slate-900 w-44 inline-block">Impact:</span> 3 shipments affected</p>
+                            <p><span className="font-bold text-slate-900 w-44 inline-block">Critical risk:</span> <span className="text-red-600 font-bold">Medicine shortage in 6 days</span></p>
+                            <p><span className="font-bold text-slate-900 w-44 inline-block">Proposed action:</span> Prioritize medical + emergency cargo</p>
+                            <p><span className="font-bold text-slate-900 w-44 inline-block">Alternative evaluated:</span> Scientific cargo deferred</p>
+                            <p><span className="font-bold text-slate-900 w-44 inline-block">Expected recovery:</span> 9 days</p>
+                            <p><span className="font-bold text-slate-900 w-44 inline-block">Energy impact:</span> <span className="text-amber-600 font-bold">Moderate</span></p>
+                            <p><span className="font-bold text-slate-900 w-44 inline-block">Constraint violations:</span> <span className="text-emerald-600 font-bold">None</span></p>
+                          </div>
                         </>
                       )}
                       <div className="flex gap-3 mt-4">
                         <button onClick={executeRecovery} className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs font-bold transition-all shadow-[0_0_15px_rgba(37,99,235,0.4)] flex-1">APPROVE</button>
-                        <button className="px-5 py-2.5 bg-slate-200 hover:bg-[#334155] border border-slate-300 text-slate-800 rounded text-xs font-bold transition-colors">MODIFY</button>
+                        <button className="px-5 py-2.5 bg-slate-200 hover:bg-slate-300 border border-slate-300 text-slate-800 rounded text-xs font-bold transition-colors">MODIFY</button>
                         <button className="px-5 py-2.5 bg-slate-200 hover:bg-red-500/20 hover:text-red-600 hover:border-red-500/30 border border-slate-300 text-slate-800 rounded text-xs font-bold transition-colors">REJECT</button>
                       </div>
                     </div>
@@ -501,7 +541,28 @@ export default function App() {
   );
 
 
-  const SupplyInventoryView = () => (
+  const SupplyInventoryView = () => {
+    const nominalData = [
+      { name: 'Emergency Kit', priority: 100, allocated: 200 },
+      { name: 'Medical', priority: 95, allocated: 100 },
+      { name: 'Fuel', priority: 90, allocated: 700 },
+      { name: 'Food', priority: 80, allocated: 500 },
+      { name: 'Scientific', priority: 40, allocated: 900 },
+    ];
+    
+    const criticalData = [
+      { name: 'Emergency Kit', priority: 100, allocated: 200 },
+      { name: 'Medical', priority: 95, allocated: 100 },
+      { name: 'Fuel', priority: 90, allocated: 700 },
+      { name: 'Food', priority: 80, allocated: 500 },
+      { name: 'Scientific', priority: 40, allocated: 0 },
+    ];
+    
+    const capacityAllocationData = systemStatus === 'NOMINAL' ? nominalData : criticalData;
+    const totalAllocated = capacityAllocationData.reduce((acc, curr) => acc + curr.allocated, 0);
+    const capacityLimit = systemStatus === 'NOMINAL' ? '2400 kg' : '1500 kg (Constrained)';
+
+    return (
     <div className="p-8 max-w-7xl mx-auto flex flex-col h-full gap-8">
       <div>
         <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Shipments & Inventory</h1>
@@ -565,7 +626,7 @@ export default function App() {
             <p className="text-xs text-slate-500 mb-6 leading-relaxed">When transport capacity is constrained, the Optimization Engine calculates allocation priority based strictly on criticality scores, predicted shortages, and emergency reserves.</p>
             <div className="h-48">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={capacityAllocationData} layout="vertical" margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
+                <BarChart data={capacityAllocationData} layout="vertical" margin={{ top: 0, right: 30, left: 60, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#1e293b" />
                   <XAxis type="number" hide />
                   <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} fontSize={10} stroke="#64748b" />
@@ -584,18 +645,18 @@ export default function App() {
               {capacityAllocationData.map(d => (
                 <div key={d.name} className="flex justify-between py-1.5">
                   <span className="text-slate-700">{d.name}</span>
-                  <span className={d.allocated > 0 ? 'text-blue-600 font-bold' : 'text-slate-600'}>{d.allocated} units</span>
+                  <span className={d.allocated > 0 ? 'text-blue-600 font-bold' : 'text-slate-600 font-bold'}>{d.allocated} kg</span>
                 </div>
               ))}
               <div className="flex justify-between border-t border-slate-300 pt-3 mt-3 font-bold text-slate-800">
-                <span>Total Capacity Utilized</span><span className="text-emerald-600">100 units</span>
+                <span>Total Capacity Utilized</span><span className={systemStatus === 'CRITICAL' ? 'text-amber-600' : 'text-emerald-600'}>{totalAllocated} kg / {capacityLimit}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  );}
 
   const ScenarioPlanningView = () => (
     <div className="p-8 max-w-7xl mx-auto flex flex-col h-full gap-6">
